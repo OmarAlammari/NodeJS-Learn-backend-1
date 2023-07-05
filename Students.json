@@ -1,0 +1,26 @@
+[
+    {
+        "fn": "ali",
+        "ln": "ali1",
+        "dept": "PD",
+        "id": 1
+    },
+    {
+        "fn": "omar",
+        "ln": "omar1",
+        "dept": "SD",
+        "id": 2
+    },
+    {
+        "fn": "amran",
+        "ln": "amran1",
+        "dept": "SA",
+        "id": 3
+    },
+    {
+        "fn": "Omarr",
+        "ln": "Omarr1",
+        "dept": "SA",
+        "id": 4
+    }
+]
