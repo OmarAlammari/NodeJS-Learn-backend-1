@@ -28,7 +28,7 @@ const StudentSchema = new mongoose.Schema({
     ln: String,
     dept: {
         type: String,
-        require: true,
+        required: true,
         // enum: ["SD", "SA", "MD"],
         validate: {
             validator: (v) => /^[SM][AD]$/.test(v)
@@ -40,7 +40,7 @@ const StudentSchema = new mongoose.Schema({
     id: {
         type: Number,
         unique: true,
-        require: true,
+        required: true,
         set: (v) => v * 100
         // main: 30,
         // max: 3000,
@@ -87,7 +87,7 @@ function addNewStudents(fn, ln, dept, id) {
         // }
     });
 }
-addNewStudents("OmarAlammari", "Omar2", "SA",5);
+addNewStudents("OmarAlammari", "Omar2", "SA", 5);
 
 
 // const { ObjectId } = require('mongodb');
@@ -96,6 +96,15 @@ addNewStudents("OmarAlammari", "Omar2", "SA",5);
 //     find({}).toArray();
 
 // console.log(collection);
+
+// npm install or npm i
+
+// npm install cookie-parser
+// npm install --save helmet
+// npm install ejs --save
+// npm i mongoose@
+// npm i mongoose@5.11.15
+
 
 
 
