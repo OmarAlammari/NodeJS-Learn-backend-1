@@ -2,7 +2,8 @@ const validator = require('../util/StudentsValidator');
 const Student = require('../models/StudentsModel');
 
 const getAllStudents = (req, res) => {
-
+//custom-environment-variables
+//custom-environment-varibles
     res.set("Access-Control-Allow-Origin");
     // Student.fetchAllStudents((obj) => {
     //     console.log(obj);

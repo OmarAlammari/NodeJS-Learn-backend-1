@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const StudentControllerDB = require('../controllers/StudentControllerDB')
 const stdValidator = require('../middleware/StudentsValidatorMW');
+const auth = require('../middleware/AuthPermissionMD');
 
 router.all('/', (req, res, nxt) => {
     console.log("request recieved on students Collection...");
@@ -33,13 +34,13 @@ router.param('id', (req, res, nxt, id) => {
 router.get('/:id', StudentControllerDB.getStudentByID);
 
 // create new students
-router.post('/', stdValidator, StudentControllerDB.addNewStudent);
+router.post('/', auth, stdValidator, StudentControllerDB.addNewStudent);
 
 
 // delete existing student
-router.delete('/:id', StudentControllerDB.deleteStudentByID);
+router.delete('/:id', auth, StudentControllerDB.deleteStudentByID);
 
 // update for student data
-router.put('/:id', StudentControllerDB.updateStudent);
+router.put('/:id', auth, StudentControllerDB.updateStudent);
 
 module.exports = router;

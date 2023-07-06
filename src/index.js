@@ -2,14 +2,14 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const helmet = require('helmet');
-const ejs = require('ejs');
+// const ejs = require('ejs');
 const cookieParser = require('cookie-parser');
 
 const studentsRouter = require('./routes/StudentsRoute');
-// const studentsRouter = require('../routes/Students');
 const logging = require('./middleware/logging');
-
-
+const userRouter = require('./routes/UserRoute');
+const authRoute = require('./routes/authRoute');
+const adminRoute = require('./routes/adminRoute');
 
 // built-in Middleware
 app.use(express.json()); //Parse JSON sent body by clint throught request body
@@ -28,7 +28,13 @@ app.use(helmet())
 //logging
 app.use(logging);
 
-app.use('/api/students',studentsRouter);
+app.use('/api/students', studentsRouter);
+app.use('/api/users', userRouter);
+app.use('/api/login', authRoute);
+app.use('/api/admin', adminRoute);
+
+
+
 
 const port = process.env.PORT || 3000;
 
