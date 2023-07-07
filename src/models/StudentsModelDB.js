@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 
-const url = 'mongodb://127.0.0.1:27017/it';
+// const { default: mongoose } = require("mongoose");
 
-//1)Connection with  DataBase
-mongoose.connect(url).then(() => {
-    console.log('DataBase Connect...');
-}).catch((err) => {
-    console.log(err);
-});
+// const url = 'mongodb://127.0.0.1:27017/it';
+
+// //1)Connection with  DataBase
+// mongoose.connect(url).then(() => {
+//     console.log('DataBase Connect...');
+// }).catch((err) => {
+//     console.log(err);
+// });
 
 //3)Create Schema
 const StudentSchema = new mongoose.Schema({

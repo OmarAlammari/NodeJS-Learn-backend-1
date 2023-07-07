@@ -5,13 +5,11 @@ require('dotenv').config();
 
 const authValidator = require('../middleware/authValidatorMW');
 const { User } = require('../models/UserModelDB');
-// const User = require('../models/UserModelDB');
 
 // Registration
-router.post('/', authValidator, async (req, res) => {
-
+router.post('/', authValidator, async (req, res, nxt) => {
+    // check email
     try {
-        // check email
         let user = await User.findOne({ email: req.body.email }).exec();
         if (!user)
             return res.status(400).send('Invalid email or password');
@@ -29,9 +27,9 @@ router.post('/', authValidator, async (req, res) => {
         // send res
         res.header("x-auth-token", token);
         res.status(200).send('logged-in successfully');
-    } catch (error) {
-        res.status(400).send('Bad Request.. ');
-        console.log(error);
+    } catch (err) {
+        // res.status(400).send('Bad Request.. ');
+        nxt(err);
     }
 });
 

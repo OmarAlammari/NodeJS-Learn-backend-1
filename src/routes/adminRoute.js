@@ -4,7 +4,6 @@ const router = express.Router();
 const auth = require('../middleware/AuthPermissionMD');
 const { User } = require('../models/UserModelDB');
 
-
 // update
 router.put('/:id', auth, (req, res) => {
     User.findByIdAndUpdate(
@@ -18,7 +17,7 @@ router.put('/:id', auth, (req, res) => {
             console.log(err);
             res.status(500).send('Internet Server Error...');
         });
-        
+
     /* User.findByIdAndUpdate(
         { _id: req.params.id },
          { isAdmin: true },

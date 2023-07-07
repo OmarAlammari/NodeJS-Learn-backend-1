@@ -4,10 +4,9 @@ const bcrypt = require('bcrypt');
 
 const userValidator = require('../middleware/UsersValidatorMW');
 const { User } = require('../models/UserModelDB');
-// const User = require('../models/UserModelDB');
 
 // Registration
-router.post('/', userValidator, async (req, res) => {
+router.post('/', userValidator, async (req, res, nxt) => {
     try {
         // check already exists
         let user = await User.findOne({ email: req.body.email }).exec();
@@ -27,15 +26,15 @@ router.post('/', userValidator, async (req, res) => {
         // if (!config.get("jwtsec"))
         //     return res.status(500).send('Request can not be full filled.. token is not defined');
 
-        const token =  user.genAuthToken();
+        const token = user.genAuthToken();
 
         // send res 
         res.header("x-auth-token", token);
         res.status(200).send('Ok');
 
     } catch (err) {
-        console.log(err);
-        res.status(400).send('Bad Request.. ');
+        // res.status(400).send('Bad Request.. ');
+        nxt(err);
     }
 });
 
